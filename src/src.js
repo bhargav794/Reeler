@@ -31,13 +31,6 @@ async function updateURL(newURLS) {
       },
       body: JSON.stringify({ newURL: newURLS }),
     });
-
-    if (response.status === 200) {
-      console.log("URL posted");
-    }
-    else{
-      throw new Error("URL not updated");
-    }
 }
 
 form.addEventListener('submit', handleLink);
