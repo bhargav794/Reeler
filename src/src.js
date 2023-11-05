@@ -9,21 +9,24 @@ async function handleLink(e) {
 try {
   e.preventDefault();
   link = inpLink.value;
+  // TODO  validatate instagram URL.
 
-  // TODO: validate that the url is a reel.
-
-  // TODO: get the reel from api with the link retrieved.
-// send the validated response to the server
+  if (!link.includes("instagram")) {
+    alert("Only instagram links are supported");
+    this.reset();
+    return;
+  }
 
   await updateURL(link);
   //await fetchFromProxy();
   this.reset();
-    } catch(err) {
+} catch(err) {
         console.error(err);
     }
 }
 
 async function updateURL(newURLS) {
+
     const response = await fetch("/setUrl", {
       method: "POST",
       headers: {
@@ -31,6 +34,7 @@ async function updateURL(newURLS) {
       },
       body: JSON.stringify({ newURL: newURLS }),
     });
+    console.log("link updated");
 }
 
 form.addEventListener('submit', handleLink);
