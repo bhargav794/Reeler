@@ -26,3 +26,8 @@ body{
     font-size: 5vh;
     color:rgb(222, 25, 25);
 }
+
+.error{
+    color: red;
+    display: none;
+}

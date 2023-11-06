@@ -54,7 +54,7 @@ const app = express();
       "User-Agent":
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/119.0",
     };
-     console.log(data);
+    // console.log(data);
      axios.post(scraper, qs.stringify(data), { headers }).then((res) => {
        const response = res.data;
        const html = response.data;
@@ -62,17 +62,27 @@ const app = express();
          const filter1 = $(".download-items");
          console.log(filter1);
          // TODO get thumbnail, place it on the screen and pass the download link into a btn.
+         const thumbNail = filter1
+           .find(".download-items__thumb")
+           .find("img")
+           .attr("src");
          const mainData = filter1
-           .find(".download-items__btn")
-           .find("a")
-           .attr("href");
-         console.log(mainData);
-         console.log(res);
+         .find(".download-items__btn")
+         .find("a")
+         .attr("href");
+         console.log(mainData, thumbNail);
+         
+        // console.log(html);
 
      }).catch((err) => {
        console.log(err);
+       
      })
  };
+
+ app.get("/get-data", (req,res) => {
+
+ })
 
 
 const port = 3000;
