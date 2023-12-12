@@ -31,7 +31,7 @@ let sharedVar = { };
   app.post("/setUrl", async (req, res) => {
     try{
     const userLink = req.body.newURL;
-      sharedVar.newOne = await getVideo(userLink);
+      sharedVar.newLink = await getVideo(userLink);
       console.log(sharedVar);
       res.status(200).json(sharedVar);
     } catch (err) {

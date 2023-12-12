@@ -1,8 +1,8 @@
 
-
 const form = document.myForm;
 const inpLink = document.querySelector(".userLink");
 let link;
+const downloadLink = document.querySelector(".downloadLink");
 
 //console.log({form, inpLink});
 
@@ -36,12 +36,12 @@ async function updateURL(newURLS) {
       body: JSON.stringify({ newURL: newURLS }),
     })
     .then(respo => {
-      console.log(respo.body);
       return respo.json();
     })
     .then(data => {
-      const fD = data.newOne;
+      const fD = data.newLink;
       console.log(fD);
+      getDURL(fD);
     })
 
     //if (response.status == 200) await getURL();
@@ -53,13 +53,13 @@ async function updateURL(newURLS) {
   }
 }
 
-async function getURL() {
-   await fetch("/get-data")
-                          .then(response => response.json())
-                          .then(data => {
-                              const serverVariable = data.sharedVar;
-                              console.log(serverVariable);  
-                                }).catch(error => console.error('Error fetching server variable:', error));
+async function getDURL(dLink) {
+
+      downloadLink.href = `${dLink}`;
+       downloadLink.style.display = "block";
+    
     }
 
 form.addEventListener("submit", handleLink);
+
+

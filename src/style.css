@@ -31,3 +31,8 @@ body{
     color: red;
     display: none;
 }
+
+.downloadLink{
+    display: none;
+
+}
